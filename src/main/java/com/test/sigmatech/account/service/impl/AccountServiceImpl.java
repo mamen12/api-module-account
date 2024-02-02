@@ -75,9 +75,13 @@ public class AccountServiceImpl implements IAccountService {
 	}
 
 	@Override
-	public UserResponse getAccountByEmail(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserResponse getAccountById(String id) {
+		UserResponse user = new UserResponse();
+		Account account = repo.findById(id).orElseThrow();
+		user.setName(account.getName());
+		user.setEmail(account.getEmail());
+		
+		return user;
 	}
 
 	

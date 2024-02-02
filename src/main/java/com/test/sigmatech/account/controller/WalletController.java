@@ -8,21 +8,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.commons.beans.beans.Request;
-import com.commons.beans.beans.Response;
-import com.commons.beans.beans.UserRequest;
 import com.commons.beans.beans.WalletRequest;
 import com.commons.beans.beans.WalletResponse;
-import com.commons.beans.constant.ApiResponse;
 import com.test.sigmatech.account.service.IWalletService;
 
 @RestController
-@RequestMapping("/wallet")
+@RequestMapping("/api/wallet")
 public class WalletController {
 	
 	@Autowired
 	private IWalletService walletService;
 	
-	@RequestMapping(value = "/ballance", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/balance", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public WalletResponse getBallanceAccountNo(@RequestBody Request<WalletRequest> rq){
 		 WalletResponse response = new WalletResponse();
 		 response =  walletService.getBallanceWallet(rq.getRequestPayload());

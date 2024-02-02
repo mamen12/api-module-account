@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.commons.beans.beans.Request;
 import com.commons.beans.beans.Response;
 import com.commons.beans.beans.UserRequest;
+import com.commons.beans.beans.UserResponse;
 import com.commons.beans.constant.ApiResponse;
 import com.test.sigmatech.account.service.IAccountService;
 
@@ -35,5 +36,15 @@ public class AccountController {
 		 return response;
 	 }
 	
+	 @RequestMapping(value = "/detail", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+     public UserResponse detailUser(@RequestBody Request<UserRequest> rq){
+		UserResponse user =new UserResponse();
+		try {
+			user = acctService.getAccountById(rq.getRequestPayload().getId());
+		} catch (Exception e) {
+			throw e;
+		}
+		return user;
+     }
 	
 }

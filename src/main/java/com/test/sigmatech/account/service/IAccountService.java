@@ -11,5 +11,5 @@ public interface IAccountService {
 	public void insertAccount(UserRequest acct) throws ParseException;
 	public List<UserResponse> getLisAccount(UserRequest payload); 
 	public void inserAllAccounts(List<Account> accounts);
-	public UserResponse getAccountByEmail(String id);
+	public UserResponse getAccountById(String id);
 }

@@ -72,7 +72,7 @@ public class WalletServiceImpl implements IWalletService {
 			Wallet wallet = repo.getAccountNo(rq.getAccountNo());
 			if (wallet.getBallance().compareTo(rq.getBallance()) >= 0 ) {
 				BigDecimal reduced = wallet.getBallance().subtract(rq.getBallance());
-				repo.reducedBallance(null, null);
+				repo.reducedBallance(reduced, rq.getAccountNo());
 				response.setReduced(true);
 			}
 		} catch (Exception e) {
